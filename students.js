@@ -3,7 +3,7 @@ const fs = require('fs');  // define the fs module //
 const addStudent = (name, ID, marks) => {
     const students = loadStudents();  // load the students data //
     const duplicateName = students.find(student =>{
-     return student.name === name
+        return student.name === name
     });
     const duplicateID = students.find(student =>{
        return student.ID === ID
@@ -11,13 +11,17 @@ const addStudent = (name, ID, marks) => {
     if(duplicateName || duplicateID){   // if the name or ID is already taken //
         console.log('Student already exists');
     }
-    else{
+    else if(marks.length !==4){  // if the marks array is longer than 4 //
+        console.log('only 4 marks allowed to enter');
+    }
+    
+    else{    // if everything went well //    
         students.push({
             name,
             ID,
             marks,
             total : calculateTotal(marks)   // calculate the total marks //
-        });        
+    });        
         saveStudents(students);   // save the new students data //
         console.log('Student added');
     }
@@ -32,7 +36,7 @@ const removeStudent = (ID) => {
         saveStudents(studentToRemove);    // save the new students data //
         console.log('Student removed');
     }
-    else{
+    else{   // if the student is not found //
         console.log('Student not found');
     }
 }

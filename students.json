@@ -1,6 +1,1 @@
-[
-  { "name": "Omar", "ID": 1, "marks": [60, 60, 60, 60], "total": 240 },
-  { "name": "Amr", "ID": 45, "marks": [60, 39, 45, 52], "total": 196 },
-  { "name": "Ahmed", "ID": 48, "marks": [48, 44, 39, 53], "total": 184 },
-  { "name": "Hassan", "ID": 70, "marks": [58, 53, 55, 60], "total": 226 }
-]
+[{"name":"Omar","ID":1,"marks":[60,60,60,60],"total":240},{"name":"Amr","ID":45,"marks":[60,39,45,52],"total":196},{"name":"Ahmed","ID":48,"marks":[48,44,39,53],"total":184},{"name":"Hassan","ID":70,"marks":[58,53,55,60],"total":226},{"name":"fady","ID":22,"marks":[58,53,55,60],"total":226}]
