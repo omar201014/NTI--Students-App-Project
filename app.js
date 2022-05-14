@@ -1,7 +1,9 @@
 // install yargs module //
 const yargs = require('yargs');
+
 // import the data from the students file //
 const students = require('./students');
+
 // define the add command //
 yargs.command({
     command: 'add',
@@ -27,6 +29,7 @@ yargs.command({
         students.addStudent(yargs.argv.name, yargs.argv.ID, yargs.argv.marks);
     }
 });
+
 // define the remove command //
 yargs.command({
     command: 'remove',
@@ -37,12 +40,27 @@ yargs.command({
             type: 'number',
             demandOption: true
         }
-    },
+    },    
     handler: () => {
         students.removeStudent(yargs.argv.ID);
     }
 });
 
+// define the read command //
+yargs.command({
+    command: 'read',
+    describe: 'Read the students data',
+    builder: {
+        name: {
+            describe: 'Student name to read data',
+            type: 'string',
+            demandOption: true
+        }
+    },
+    handler: () => {
+        students.readStudents(yargs.argv.name);
+    }
+});
 yargs.parse();
 
 

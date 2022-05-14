@@ -40,7 +40,22 @@ const removeStudent = (ID) => {
         console.log('Student not found');
     }
 }
-
+// read the students data from JSON file //
+const readStudents = (name) => {
+    const students = loadStudents();  // load the students data //
+    const student = students.find((student) => {   // find the student with the corresponding name //    
+        return student.name === name
+    })
+    if(student){  // if the student is found //
+        console.log(`Name: ${student.name}`);
+        console.log(`ID: ${student.ID}`);
+        console.log(`maths: ${student.marks[0]}\nphysics: ${student.marks[1]}\nchemistry: ${student.marks[2]}\nbiology: ${student.marks[3]}`);
+        console.log(`Total: ${student.total}`);
+    }
+    else{  // if the student is not found //
+        console.log('Student not found');
+    }
+}
 // calculate the total marks function//
 const calculateTotal = (marks) => {
     let total = 0;
@@ -66,6 +81,7 @@ const calculateTotal = (marks) => {
 // export the addStudent function //
     module.exports = {
         addStudent ,
-        removeStudent
+        removeStudent,
+        readStudents
     }
 
