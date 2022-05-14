@@ -27,6 +27,21 @@ yargs.command({
         students.addStudent(yargs.argv.name, yargs.argv.ID, yargs.argv.marks);
     }
 });
+// define the remove command //
+yargs.command({
+    command: 'remove',
+    describe: 'Remove a student',
+    builder: {
+        ID: {
+            describe: 'Student ID to remove',
+            type: 'number',
+            demandOption: true
+        }
+    },
+    handler: () => {
+        students.removeStudent(yargs.argv.ID);
+    }
+});
 
 yargs.parse();
 

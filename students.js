@@ -1,27 +1,42 @@
 const fs = require('fs');  // define the fs module // 
-
+// add function to add a new student //
 const addStudent = (name, ID, marks) => {
-    const student = loadStudents();
-    const duplicateName = student.find(student =>{
+    const students = loadStudents();  // load the students data //
+    const duplicateName = students.find(student =>{
      return student.name === name
     });
-    const duplicateID = student.find(student =>{
+    const duplicateID = students.find(student =>{
        return student.ID === ID
     });
     if(duplicateName || duplicateID){   // if the name or ID is already taken //
         console.log('Student already exists');
     }
     else{
-        student.push({
+        students.push({
             name,
             ID,
             marks,
             total : calculateTotal(marks)   // calculate the total marks //
         });        
-        saveStudents(student);
+        saveStudents(students);   // save the new students data //
         console.log('Student added');
     }
 }
+// remove the student function by ID //
+const removeStudent = (ID) => {
+    const students = loadStudents();  // load the students data //
+    const studentToRemove = students.filter((student) =>{   // filter the students data and return array with the corresponding data //
+        return student.ID !== ID        
+    })
+    if(students.length > studentToRemove.length){  // confirm that the student is removed //
+        saveStudents(studentToRemove);    // save the new students data //
+        console.log('Student removed');
+    }
+    else{
+        console.log('Student not found');
+    }
+}
+
 // calculate the total marks function//
 const calculateTotal = (marks) => {
     let total = 0;
@@ -46,6 +61,7 @@ const calculateTotal = (marks) => {
     }
 // export the addStudent function //
     module.exports = {
-        addStudent
+        addStudent ,
+        removeStudent
     }
 
