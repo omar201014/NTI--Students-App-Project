@@ -61,6 +61,15 @@ yargs.command({
         students.readStudents(yargs.argv.name);
     }
 });
+
+// define the list command //
+yargs.command({
+    command: 'list',
+    describe: 'List students data',
+    handler: () => {
+        students.listStudents();
+    }
+});
 yargs.parse();
 
 

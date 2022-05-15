@@ -56,6 +56,19 @@ const readStudents = (name) => {
         console.log('Student not found');
     }
 }
+// list the students function //
+const listStudents = () => {
+    const students = loadStudents();  // load the students data //
+    students.forEach((student) => {   // print the students data //
+        console.log(`Name: ${student.name}`);
+        console.log(`ID: ${student.ID}`);
+        console.log(`maths: ${student.marks[0]}\nphysics: ${student.marks[1]}\nchemistry: ${student.marks[2]}\nbiology: ${student.marks[3]}`);
+        console.log(`Total: ${student.total}`);
+        console.log(`\n ------------------------------------------------- \n`);
+    })
+}
+
+
 // calculate the total marks function//
 const calculateTotal = (marks) => {
     let total = 0;
@@ -82,6 +95,7 @@ const calculateTotal = (marks) => {
     module.exports = {
         addStudent ,
         removeStudent,
-        readStudents
+        readStudents,
+        listStudents
     }
 
